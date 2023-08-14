@@ -18,6 +18,8 @@ const fs = require('fs');
 // Для верных ссылок в devTools к файлам scss
 const sourceMaps = require('gulp-sourcemaps');
 
+const ghPages = require('gulp-gh-pages');
+
 gulp.task('html', function () {
   return gulp.src('./src/*.html')
     .pipe(htmlInclude({
@@ -71,3 +73,8 @@ gulp.task('default', gulp.series(
   gulp.parallel('scss', 'html', 'images'),
   gulp.parallel('startServer', 'watch')
 ))
+
+gulp.task('deploy', function () {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
+});
