@@ -1,0 +1,68 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    width: 97px;
+    height: 75px;
+    object-fit: cover;
+  }
+
+  &__menu-link {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Signika', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22.18px;
+  }
+
+  &__items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    gap: 77px;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__tel-block {
+    display: grid;
+    column-gap: 8px;
+    grid-template-columns: auto auto;
+    grid-template-rows: 24px 24px;
+  }
+
+  &__tel-link {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: #FFFFFF;
+    align-self: center;
+  }
+
+  &__tel-icon {
+    width: 30px;
+    height: 30px;
+    grid-row: span 2;
+    align-self: center;
+  }
+
+  &__btn {
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    padding: 16px 24px;
+    color: #FFFFFF;
+    background: transparent;
+    cursor: pointer;
+    margin: 0;
+    transition: 0.8s;
+
+    &:hover {
+      border: 1px solid #22ADAA;
+      color: #22ADAA;
+    }
+  }
+}
