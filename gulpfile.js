@@ -97,7 +97,7 @@ gulp.task('default', gulp.series(
   gulp.parallel('startServer', 'watch')
 ))
 
-// gulp.task('deploy', function () {
-//   return gulp.src('./dist/**/*')
-//     .pipe(ghPages());
-// });
+gulp.task('deploy', function () {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
+});
