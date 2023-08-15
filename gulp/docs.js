@@ -26,48 +26,48 @@ const { config } = require('../webpack.config.js');
 const babel = require('gulp-babel');
 
 gulp.task('html:docs', function () {
-  return gulp.src('../src/*.html')
+  return gulp.src('./src/*.html')
     .pipe(htmlInclude({
       prefix: '@@',
       basepath: '@file'
     }))
-    .pipe(gulp.dest('../docs/'))
+    .pipe(gulp.dest('./docs/'))
 })
 
 gulp.task('scss:docs', function () {
   return gulp
-    .src('../src/scss/*.scss')
+    .src('./src/scss/*.scss')
     .pipe(sourceMaps.init())
     .pipe(scss())
     .pipe(sourceMaps.write())
-    .pipe(gulp.dest('../docs/css/'))
+    .pipe(gulp.dest('./docs/css/'))
 })
 
 gulp.task('images:docs', function () {
   return gulp
-    .src('../src/images/**/*')
-    .pipe(gulp.dest('../docs/images/'))
+    .src('./src/images/**/*')
+    .pipe(gulp.dest('./docs/images/'))
 })
 
 gulp.task('fonts:docs', function () {
   return gulp
-    .src('../src/fonts/**/*')
-    .pipe(gulp.dest('../docs/fonts/'))
+    .src('./src/fonts/**/*')
+    .pipe(gulp.dest('./docs/fonts/'))
 })
 
 gulp.task('js:docs', function () {
   return gulp
-    .src('../src/js/*.js')
+    .src('./src/js/*.js')
     .pipe(babel({
       presets: ['@babel/env']
     }))
     .pipe(webpack(config))
-    .pipe(gulp.dest('../docs/js/'))
+    .pipe(gulp.dest('./docs/js/'))
 })
 
 gulp.task('startServer:docs', function () {
   return gulp
-    .src('../docs/')
+    .src('./docs/')
     .pipe(liveServer({
       livereload: true,
       open: true
@@ -75,20 +75,20 @@ gulp.task('startServer:docs', function () {
 })
 
 gulp.task('clean:docs', function (done) {
-  if (fs.existsSync('../docs/')) {
+  if (fs.existsSync('./docs/')) {
     return gulp
-      .src('../docs/', { read: false })
+      .src('./docs/', { read: false })
       .pipe(deletebuild())
   }
   done()
 })
 
 gulp.task('watch:docs', function () {
-  gulp.watch('../src/scss/**/*.scss', gulp.parallel('scss:docs'))
-  gulp.watch('../src/**/*.html', gulp.parallel('html:docs'))
-  gulp.watch('../src/images/**/*', gulp.parallel('images:docs'))
-  gulp.watch('../src/fonts/**/*', gulp.parallel('fonts:docs'))
-  gulp.watch('../src/js/**/*', gulp.parallel('js:docs'))
+  gulp.watch('./src/scss/**/*.scss', gulp.parallel('scss:docs'))
+  gulp.watch('./src/**/*.html', gulp.parallel('html:docs'))
+  gulp.watch('./src/images/**/*', gulp.parallel('images:docs'))
+  gulp.watch('./src/fonts/**/*', gulp.parallel('fonts:docs'))
+  gulp.watch('./src/js/**/*', gulp.parallel('js:docs'))
 })
 
 
