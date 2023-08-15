@@ -1,9 +1,115 @@
 .promo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 77px 0 0;
+
   &__title {
+    font-family: 'RAYDIS', Arial, sans-serif;
     width: 623px;
-    color: transparent;
-    -webkit-text-stroke: 1px #22ADAA;
+    color: #22ADAA;
     text-transform: uppercase;
     font-size: 60px;
+    font-weight: 800;
+    padding: 0;
+    margin: 0;
+    line-height: 60px;
+    text-align: center;
+    z-index: 1;
+
+    &_type_stroke {
+      -webkit-text-stroke: 1px #22ADAA;
+      color: transparent;
+    }
+
+    &_type_stroke-USA {
+      font-size: 160px;
+      line-height: 150px;
+      -webkit-text-stroke: 1px #22ADAA;
+      color: transparent;
+      text-align: right;
+      text-transform: uppercase;
+    }
+  }
+
+  &__text {
+    font-family: 'Signika', Arial, sans-serif;
+    width: 366px;
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30.8px;
+    padding: 0;
+    margin: 0;
+
+    &_type_strong {
+      font-size: 49px;
+      line-height: 68.6px;
+    }
+  }
+
+  &__list {
+    padding: 0;
+    margin: 24px 0 0;
+    grid-row: 2;
+  }
+
+  &__item {
+    font-family: 'Signika', Arial, sans-serif;
+    width: 366px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19.71px;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__btn {
+    margin: 24px 0 0;
+    padding: 16px 24px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.09);
+    outline: none;
+    border: none;
+    font-family: 'Signika', Arial, sans-serif;
+    color: #1B1821;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.71px;
+    grid-row: 3;
+    width: 235px;
+  }
+
+  // &__image-wrapper {
+  //   width: 900px;
+  //   height: 350px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+
+  &__image {
+    display: block;
+    width: 769.42px;
+    height: 315px;
+    object-fit: cover;
+    padding-left: 10px;
+    padding-bottom: 25px;
+    background-image: url('../../images/Ellipse 1.png');
+    background-repeat: no-repeat;
+    background-position: bottom 0 right 0;
+    background-size: contain;
+    grid-row: span 2;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    z-index: 2;
+    top: 190px;
+    left: 0;
   }
 }
