@@ -20,6 +20,11 @@ const sourceMaps = require('gulp-sourcemaps');
 
 const ghPages = require('gulp-gh-pages');
 
+const webpack = require('webpack-stream');
+const { config } = require('./webpack.config');
+
+const babel = require('gulp-babel');
+
 gulp.task('html', function () {
   return gulp.src('./src/*.html')
     .pipe(htmlInclude({
@@ -44,6 +49,22 @@ gulp.task('images', function () {
     .pipe(gulp.dest('./dist/images/'))
 })
 
+gulp.task('fonts', function () {
+  return gulp
+    .src('./src/fonts/**/*')
+    .pipe(gulp.dest('./dist/fonts/'))
+})
+
+gulp.task('js', function () {
+  return gulp
+    .src('./src/js/*.js')
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
+    .pipe(webpack(config))
+    .pipe(gulp.dest('./dist/js/'))
+})
+
 gulp.task('startServer', function () {
   return gulp
     .src('./dist/')
@@ -66,15 +87,17 @@ gulp.task('watch', function () {
   gulp.watch('./src/scss/**/*.scss', gulp.parallel('scss'))
   gulp.watch('./src/**/*.html', gulp.parallel('html'))
   gulp.watch('./src/images/**/*', gulp.parallel('images'))
+  gulp.watch('./src/fonts/**/*', gulp.parallel('fonts'))
+  gulp.watch('./src/js/**/*', gulp.parallel('js'))
 })
 
 gulp.task('default', gulp.series(
   'clean',
-  gulp.parallel('scss', 'html', 'images'),
+  gulp.parallel('scss', 'html', 'images', 'fonts', 'js'),
   gulp.parallel('startServer', 'watch')
 ))
 
-gulp.task('deploy', function () {
-  return gulp.src('./dist/**/*')
-    .pipe(ghPages());
-});
+// gulp.task('deploy', function () {
+//   return gulp.src('./dist/**/*')
+//     .pipe(ghPages());
+// });
